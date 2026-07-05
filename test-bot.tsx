@@ -7,12 +7,6 @@ const BLUESKY_PASSWORD = process.env.BLUESKY_PASSWORD!;
 
 dotenv.config();
 
-// Create a Bluesky Agent 
-const agent = new Agent({
-    service: 'https://bsky.social',
-  })
-
-
 async function main() {
     const account: AtpAgentLoginOpts = {
         identifier: BLUESKY_USERNAME,
@@ -20,8 +14,6 @@ async function main() {
       }
     const session = new CredentialSession(new URL('https://bsky.social'))
     const agent = new Agent(session)
-    await agent.login(account)
-    
     await agent.post({
         text: "🙂"
     });
