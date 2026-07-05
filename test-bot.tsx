@@ -1,5 +1,7 @@
 import { Agent, CredentialSession } from '@atproto/api';
 import { AtpAgentLoginOpts } from '@atproto/api';
+import dotenv from 'dotenv';
+import { CronJob } from 'cron';
 const BLUESKY_USERNAME = process.env.BLUESKY_USERNAME!;
 const BLUESKY_PASSWORD = process.env.BLUESKY_PASSWORD!;
 
