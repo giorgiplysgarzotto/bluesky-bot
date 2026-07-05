@@ -1,10 +1,10 @@
-# fly.toml app configuration file generated for bluesky-bot-lustrous-island-3113 on 2026-07-04T22:59:48-04:00
+# fly.toml app configuration file generated for bluesky-bot-zq99hq on 2026-07-05T04:22:56Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'bluesky-bot-lustrous-island-3113'
-primary_region = 'iad'
+app = 'bluesky-bot-zq99hq'
+primary_region = 'ams'
 
 [build]
 
