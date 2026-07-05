@@ -14,6 +14,7 @@ async function main() {
       }
     const session = new CredentialSession(new URL('https://bsky.social'))
     const agent = new Agent(session)
+    await session.login(account)
     await agent.post({
         text: "🙂"
     });

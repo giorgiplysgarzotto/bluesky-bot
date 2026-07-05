@@ -12,7 +12,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "test-bot.tsx",
-    "start": "npx tsx test-bot.tsx"
+    "start": "node --import tsx/esm test-bot.tsx"
   },
   "dependencies": {
     "@atproto/api": "^0.20.25",
