@@ -1,25 +1,26 @@
 import { Agent, CredentialSession } from '@atproto/api';
-import { AtpAgentLoginOpts } from '@atproto/api';
-import dotenv from 'dotenv';
+import {config} from 'dotenv';
 import { CronJob } from 'cron';
+config({ path: '.env' });
 const BLUESKY_USERNAME = process.env.BLUESKY_USERNAME!;
 const BLUESKY_PASSWORD = process.env.BLUESKY_PASSWORD!;
 
-dotenv.config();
+const session = new CredentialSession(new URL('https://bsky.social'))
+const agent = new Agent(session)
+
+async function login(username: string, password: string) {
+    if (!session.hasSession) {
+        await session.login({ identifier: BLUESKY_USERNAME, password: BLUESKY_PASSWORD});
+    }
+    console.log('Logged in as', session.did)
+    return agent;
+}
 
 async function main() {
-    const account: AtpAgentLoginOpts = {
-        identifier: BLUESKY_USERNAME,
-        password: BLUESKY_PASSWORD,
-      }
-    const session = new CredentialSession(new URL('https://bsky.social'))
-    const agent = new Agent(session)
-    await session.login(account)
+    await login(BLUESKY_USERNAME, BLUESKY_PASSWORD);
     await agent.post({
-        text: "🙂"
-    });
-    console.log("Just posted!")
-}
+    text: "🙂"
+});}
 
 main().catch(err => {
     console.error('Login/post failed:', err.message)
