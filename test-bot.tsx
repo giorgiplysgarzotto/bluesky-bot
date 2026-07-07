@@ -21,7 +21,10 @@ async function main() {
     console.log("Just posted!")
 }
 
-main();
+main().catch(err => {
+    console.error('Login/post failed:', err.message)
+    // don't rethrow — let the process stay alive for cron
+  })
 
 
 // Run this on a cron job
